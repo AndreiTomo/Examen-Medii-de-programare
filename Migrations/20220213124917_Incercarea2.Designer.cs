@@ -4,14 +4,16 @@ using Examen_Medii_de_programare.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Examen_Medii_de_programare.Migrations
 {
     [DbContext(typeof(Examen_Medii_de_programareContext))]
-    partial class Examen_Medii_de_programareContextModelSnapshot : ModelSnapshot
+    [Migration("20220213124917_Incercarea2")]
+    partial class Incercarea2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

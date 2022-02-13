@@ -19,13 +19,37 @@ namespace Examen_Medii_de_programare.Pages.Toys
             _context = context;
         }
 
-        public IList<Toy> Toy { get;set; }
+        public IList<Toy> Toy { get; set; }
+        public ToyData ToyD { get; set; }
+        public int ToyID { get; set; }
+        public int CategoryID { get; set; }
+        public async Task OnGetAsync(int? id, int? categoryID)
+        {
+            ToyD = new ToyData();
 
-        public async Task OnGetAsync()
+            ToyD.Toys = await _context.Toy
+                .Include(b => b.Producator)
+                .Include(b => b.ToyCategories)
+                 .ThenInclude(b => b.Category)
+                .AsNoTracking()
+                .OrderBy(b => b.Nume)
+                .ToListAsync();
+            if (id != null)
+            {
+                ToyID = id.Value;
+                Toy toy = ToyD.Toys
+                .Where(i => i.ID == id.Value).Single();
+                ToyD.Categories = toy.ToyCategories.Select(s => s.Category);
+            }
+        }
+    }
+}
+
+       /* public async Task OnGetAsync()
         {
             Toy = await _context.Toy
                 .Include(b=>b.Producator)
                 .ToListAsync();
         }
     }
-}
+}*/

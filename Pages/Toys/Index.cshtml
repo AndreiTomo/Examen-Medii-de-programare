@@ -1,4 +1,4 @@
-﻿@page
+﻿@page 
 @model Examen_Medii_de_programare.Pages.Toys.IndexModel
 
 @{
@@ -28,11 +28,20 @@
             <th>
                 @Html.DisplayNameFor(model => model.Toy[0].Producator.NumeProducator)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Toy[0].ToyCategories)
+            </th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Toy) {
-        <tr>
+@foreach (var item in Model.ToyD.Toys) {
+
+    string selectedRow = "";
+    if (item.ID == Model.ToyID)
+    {
+        selectedRow = "table-success";
+    }
+        <tr class="@selectedRow">
             <td>
                 @Html.DisplayFor(modelItem => item.Nume)
             </td>
@@ -47,6 +56,14 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Producator.NumeProducator)
+            </td>
+            <td>
+                @{ 
+                    foreach(var category in item.ToyCategories)
+                {
+                    @category.Category.ID @: @category.Category.CategoryName <br/>
+                }
+                }
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |

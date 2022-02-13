@@ -4,14 +4,16 @@ using Examen_Medii_de_programare.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Examen_Medii_de_programare.Migrations
 {
     [DbContext(typeof(Examen_Medii_de_programareContext))]
-    partial class Examen_Medii_de_programareContextModelSnapshot : ModelSnapshot
+    [Migration("20220213123704_Incercarea1")]
+    partial class Incercarea1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -63,9 +65,7 @@ namespace Examen_Medii_de_programare.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Nume")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(150)")
-                        .HasMaxLength(150);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("Pret")
                         .HasColumnType("decimal(18,2)");

@@ -10,7 +10,7 @@ namespace Examen_Medii_de_programare.Torpenyi_Andrei_Examen.Models
     public class Toy
     {
         public int ID { get; set; }
-
+        [Required, StringLength(150, MinimumLength = 3)]
         [Display(Name = "Toy Name")]
         public string Nume { get; set;}
         public string Magazin { get; set; }
